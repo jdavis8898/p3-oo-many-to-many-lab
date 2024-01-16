@@ -1,10 +1,14 @@
 # import ipdb
 
 class Author:
+
+    all = []
     
     def __init__(self, name):
 
         self.name = name
+
+        Author.all.append(self)
     
     def contracts(self):
         
@@ -12,7 +16,7 @@ class Author:
     
     def books(self):
         
-        return [contract.book for contract in Contract.all if contract.author == self]
+        return [contract.book for contract in self.contracts()]
     
     def sign_contract(self, book, date, royalties):
         return Contract(self, book, date, royalties)
