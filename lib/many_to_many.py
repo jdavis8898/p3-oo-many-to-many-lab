@@ -46,7 +46,7 @@ class Book:
     
     def authors(self):
 
-        return [contract.author for contract in Contract.all if contract.book == self]
+        return [contract.author for contract in self.contracts()]
 
 class Contract:
 
@@ -109,9 +109,13 @@ class Contract:
         else:
             raise Exception("Needs to be an integer")
     
-    def contracts_by_date(date):
-        
+    @classmethod
+    def contracts_by_date(cls, date):
+
         return [contract for contract in Contract.all if date == contract.date]
+    # def contracts_by_date(date):
+        
+    #     return [contract for contract in Contract.all if date == contract.date]
 
 
 # book = Book("Title")
